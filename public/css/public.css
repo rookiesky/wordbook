@@ -1,0 +1,20 @@
+.list-group .list-group-item a{
+    color:#555;
+    text-decoration:none;
+}
+.list-group .list-group-item .timeago {
+    color:#bab9bb;
+}
+.links a{
+    color:#999;
+}
+.art-host{
+    font-size: 13px;
+}
+.article{
+    text-indent: 2em;
+    color: #596172;
+    line-height: 32px;
+    font-size: 16px;
+    word-break: break-all;
+}
