@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/list','MobileApiController@lists');
+Route::get('/newest','MobileApiController@newest');
+Route::get('/get-book','MobileApiController@getController');
+

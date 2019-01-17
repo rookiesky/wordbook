@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'PRC',
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+
     ],
 
     /*
@@ -225,6 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

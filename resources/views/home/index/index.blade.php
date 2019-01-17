@@ -9,58 +9,16 @@
                         最新文章
                     </div>
                     <div class="card-body list-group pt-0 pb-0 pr-0">
-                        <li class="list-group-item border-top-0 border-right-0 border-left-0">
-                            <span class="badge badge-success">都市小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
+                        @foreach($books as $item)
                         <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">武侠小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
+                            <span class="badge badge-success mr-2">{{ $item->sort->name }}</span><a href="/article/{{ Hashids::encode($item->id) }}" target="_blank" title="{{ $item->title }}">{{ $item->title }}</a> <span class="float-right timeago">{{ $item->created_at->diffForHumans() }}</span>
                         </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">玄幻小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">武侠小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">玄幻小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">武侠小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">玄幻小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">武侠小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">玄幻小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">武侠小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0">
-                            <span class="badge badge-success">玄幻小说</span><a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a> <span class="float-right timeago">1小时前</span>
-                        </li>
-
+                        @endforeach
                     </div>
                     <div class="card-footer text-muted">
                         <nav aria-label="...">
                             <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <span class="page-link">Previous</span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active">
-      <span class="page-link">
-        2
-        <span class="sr-only">(current)</span>
-      </span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
+                               {{ $books->links() }}
                             </ul>
                         </nav>
                     </div>
@@ -72,7 +30,7 @@
                         网站公告
                     </div>
                     <div class="card-body">
-                        这里是小说的公告内容
+                        @if(\Illuminate\Support\Facades\Cache::has('SYSTEM_CACHE')){{ Cache('SYSTEM_CACHE')->notice }} @endif
                     </div>
                 </div>
                 <div class="card rounded-0 mt-4">
@@ -80,33 +38,11 @@
                         最热文章
                     </div>
                     <div class="card-body list-group pt-0 pb-0 pr-0 art-host">
-                        <li class="list-group-item border-top-0 border-right-0 border-left-0 text-truncate pl-1">
-                          <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
+                        @foreach($hots as $item)
+                        <li class="list-group-item border-top-0 border-right-0 border-left-0 text-truncate pl-2">
+                            <span class="badge badge-danger mr-2">Hot</span><a href="/article/{{ Hashids::encode($item->id) }}" target="_blank" title="{{ $item->title }}">{{ $item->title }}</a>
                         </li>
-                        <li class="list-group-item border-right-0 border-left-0 text-truncate pl-1">
-                            <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0 text-truncate pl-1">
-                            <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0 text-truncate pl-1">
-                            <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0 text-truncate pl-1">
-                            <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0 text-truncate pl-1">
-                            <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0 text-truncate pl-1">
-                            <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0 text-truncate pl-1">
-                            <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
-                        </li>
-                        <li class="list-group-item border-right-0 border-left-0 text-truncate pl-1">
-                            <a href="">「持续更新」Laracasts 系列教程 - Be Awesome In PhpStorm 中文字幕发布</a>
-                        </li>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -120,69 +56,11 @@
             </div>
             <div class="card-body">
                 <div class="row links">
+                    @foreach($links as $item)
                     <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接</a>
+                        <a href="{{ $item->url }}" target="_blank" title="{{ $item->title }}">{{ $item->title }}</a>
                     </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接小说</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">农耕导航</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接小说</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">农耕导航</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接小说</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">农耕导航</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接小说</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">农耕导航</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接小说</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">农耕导航</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接小说</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">农耕导航</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">友情链接小说</a>
-                    </div>
-                    <div class="col-xl-1 pr-1 pl-1">
-                        <a href="">农耕导航</a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

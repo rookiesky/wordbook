@@ -12,4 +12,5 @@ class Book extends Model
     {
         return $this->hasOne('App\Sort','id','sort_id');
     }
+
 }

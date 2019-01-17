@@ -14,4 +14,5 @@ class Controller extends BaseController
     const ADMIN_VIEW_PREFIX = 'admin';
     const ADMIN_PREFIX = 'wp-book';
     const HOME_VIEW_PREFIX = 'home';
+    const MOBILE_VIEW_PREFIX = 'mobile';
 }

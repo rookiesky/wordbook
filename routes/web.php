@@ -12,8 +12,22 @@
 */
 
 Route::get('/','HomeController@index');
-Route::get('/article','HomeController@article');
+Route::get('/article/{id}','HomeController@article');
+Route::get('/list/{id}','HomeController@lists');
+Route::get('/search','HomeController@search');
+
+Route::get('/update/view/number','HomeController@updateViewNumber');
+
+
 Route::get('/reptile','Admin\ReptileController@index');
+
+
+Route::group(['prefix'=>'mobile'],function (){
+
+    Route::get('/','MobileController@index');
+    Route::get('/list/{id}','MobileController@lists');
+
+});
 
 
 

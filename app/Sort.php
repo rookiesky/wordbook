@@ -14,4 +14,9 @@ class Sort extends Model
     {
         return $this->hasMany('App\Book');
     }
+
+    public function booksPaginate($limit = 20)
+    {
+        return $this->books()->orderBy('created_at','desc')->paginate($limit);
+    }
 }
